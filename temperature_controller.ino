@@ -11,7 +11,7 @@
  * - LM35 Temperature Sensor connected to A0
  * - Relay Module connected to D7
  * 
- * Author: Your Name
+ * Author: Dr Yi-Kuen Lee
  * Date: December 2025
  * Version: 1.0
  * License: MIT
