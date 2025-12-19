@@ -84,6 +84,30 @@ LM35       |               |       Relay Module
 +---------------+ | COM +--- To Load
 | NO +--- To Load
 +-------+
+
+The code includes several practical features worth noting. The averaging of multiple sensor readings helps reduce noise and provides more stable temperature values. The hysteresis implementation prevents the relay from rapidly switching on and off when the temperature hovers around the threshold, which would cause that annoying clicking sound and reduce relay lifespan. I also included support for both active-LOW and active-HIGH relay modules since different manufacturers use different logic levels.
+
+The F() macro wraps the string literals to store them in flash memory instead of RAM, which is helpful on memory-constrained Arduino boards.
+When you open the Serial Monitor at 9600 baud, you'll see output like this:
+
+========================================
+  Arduino Temperature Controller v1.0
+========================================
+
+Temperature Threshold: 30.0 C
+Hysteresis: 2.0 C
+Relay turns OFF below: 28.0 C
+Relay Type: Active-LOW
+
+----------------------------------------
+  Temp (C)  |  Relay  |  Status
+----------------------------------------
+   24.5     |   OFF   |  Below threshold - Idle
+   26.2     |   OFF   |  Below threshold - Idle
+   30.3     |   ON    |  Above threshold - Cooling
+   29.1     |   ON    |  Hysteresis zone - Holding
+   27.5     |   OFF   |  Below threshold - Idle 
+
 ## Installation
 
 1. Clone this repository to your local machine:
